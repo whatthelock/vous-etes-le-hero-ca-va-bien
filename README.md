@@ -1,4 +1,4 @@
-![#Ca Va Bien](/assets/covid.jfif)
+![#Ca Va Bien](/assets/logo.png)
 [Développement web - Projet vous êtes le héros](page1.html)
 **Genre:** Tranche de vie, actualité
 [**Inspiration:** Temps actuel, vie réelle](https://www.cdc.gov/coronavirus/2019-ncov/index.html)
