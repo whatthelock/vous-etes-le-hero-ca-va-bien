@@ -1,0 +1,92 @@
+@font-face {
+  src: url("/assets/Coronaviral.woff2") format("woff2");
+  font-family: "coronaviral";
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #782b38;
+  font-family: "Raleway", sans-serif;
+}
+
+h1 {
+  color: #ee959b;
+  font-family: coronaviral;
+  font-size: 4.7em;
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 0px;
+  border-radius: 50%;
+}
+
+.underline {
+  background-color: #ee959b;
+  width: 90%;
+  height: 5px;
+  margin: 0 auto;
+}
+
+h2 {
+  color: #faeff0;
+  text-align: center;
+}
+
+p {
+  color: #faeff0;
+  text-align: center;
+}
+
+.flex {
+  width: 100%;
+  height: 100vh;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.game {
+  width: 700px;
+  height: 740px;
+  background-color: #8b182a;
+  padding: 30px;
+  border: 4px solid #faeff0;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  overflow: hidden;
+}
+
+img {
+  width: 100%;
+  margin-top: 10px;
+  max-width: 700px;
+}
+
+.option-bar {
+  margin-top: 30px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-self: flex-end;
+}
+
+.button {
+  width: 130px;
+  height: 40px;
+  background-color: #faeff0;
+  border: 4px solid #e46273;
+  border-radius: 5px;
+  cursor: pointer;
+  transition-property: background-color, color;
+  transition-duration: 0.2s;
+}
+
+.button:hover {
+  background-color: #ee959b;
+  color: #faeff0;
+}
