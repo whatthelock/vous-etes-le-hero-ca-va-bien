@@ -91,15 +91,16 @@ const vaccin = {
   ],
 };
 
-const vaccin = {
-  subtitle: "Offre vaccinale",
-  text: "En arrivant à la cafétéria, tu croise un clinique de vaccination qui t'offre un vaccin sur place. Le vaccin semble légérement louche, l'accepte tu malgré ta phobie des aiguilles??",
-  img: "vaccin.jpg",
+const retour = {
+  subtitle: "Retour à la maison",
+  text: "De retour a la maison, tu réalise que tu absolument te rendre à la fête de ton meilleur ami organisée depuis longtemps",
+  img: "fete",
+  /* Si vacciner tu gagne, autrement tu meurt, aucun choix*/
 };
 
 const mort = {
   subtitle: "VOUS ETES MORT",
-  text: "Vous avez atttrapé la maladie, après de long jour à l'hopital à vous accrocher à la vie entouré de votre famille cher, la pandemie a eu raion de vous, reposer en paix.",
+  text: "Tu as atttrapé la maladie, après de long jour à l'hopital à t'accrocher à la vie entouré de ta famille cher, la pandemie a eu raion de toi, repose en paix.",
   img: "rip.jpg",
 };
 
@@ -110,6 +111,7 @@ const chapterObj = {
   offre_vaccinale: vaccin,
   annonce_pandemie: firstchapter,
   you_die: mort,
+  retour_maison: retour,
 };
 
 function goToChapter(chapterName) {
