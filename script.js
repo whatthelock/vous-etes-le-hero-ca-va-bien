@@ -1,9 +1,6 @@
 /*Tu te reveille un doux matin de printemps, le soleil illumine doucement ta chambre avec de beaux faissauts lumineux. */
-
 const chapterObj = {
-
   /*Tu te reveille un doux matin de printemps, le soleil illumine doucement ta chambre avec de beaux faissauts lumineux. */
-
   annonce_pandemie: firstchapter = {
     subtitle: "La pandémie annoncée",
     text: "En descandant pour dejeuner tu apprends une grave nouvelle: UNE PANDÉMIE MONDIALE VIENT D'ÊTRE ANNONCÉ TU DOIS TOUT FAIRE EN TON POUVOIR POUR TE PROTEGER TOI ET TA FAMILLE",
@@ -108,6 +105,17 @@ const chapterObj = {
 
 function goToChapter(chapterName) {
   const chapitre = chapterObj[chapterName];
+
   console.log(chapitre.subtitle);
-  console.log(chapitre.text);
+  console.log(chapitre.options);
+
+  const title = document.querySelector('.chapterName');
+  title.innerHTML = chapitre.subtitle;
+
+  const desc = document.querySelector('.description');
+  desc.innerHTML = chapitre.text;
+
+  const imgHtml = document.querySelector('.holder-img');
+  imgHtml.innerHTML = `<img src="assets/${chapitre.img}" alt="covid">`;
 }
+
