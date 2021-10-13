@@ -4,7 +4,7 @@ const chapterObj = {
   annonce_pandemie: firstchapter = {
     subtitle: "La pandémie annoncée",
     text: "En descandant pour dejeuner tu apprends une grave nouvelle: UNE PANDÉMIE MONDIALE VIENT D'ÊTRE ANNONCÉ TU DOIS TOUT FAIRE EN TON POUVOIR POUR TE PROTEGER TOI ET TA FAMILLE",
-    img: "pandemie.jpg",
+    img: "pandemie",
     options: [
       {
         text: "Sécher les cours par protection",
@@ -20,7 +20,7 @@ const chapterObj = {
   journee_a_maison: journeMaison = {
     subtitle: "Ta journée à la maison",
     text: "Maintenant que tu ne va plus a l'école, tu dois trouver quelque chose a manger. Tu va regarder dans ton frigo...OH MALHEUR!!! I ne reste plus rine à manger dans ta maison!!!! QUe va tu faire!?",
-    img: "frigo.jpg",
+    img: "frigo",
     options: [
       {
         text: "commender de la nourriture",
@@ -36,7 +36,7 @@ const chapterObj = {
   aventure_epicerie: choix_bouffe = {
     subtitle: "Aventure à l'épicerie",
     text: "Tu viens tout juste de renter à l'épicerie, malheureusement du a la pandémie, la majorité des items ont déja été venduent!! De plus tu réalise que tu as oublié ton porte-feuille à la maison.... Tu dois donc te limiter a un items et choisir dans l'inventaire très renstraint:",
-    img: "epicerie.jpg",
+    img: "epicerie",
     options: [
       {
         text: "banane",
@@ -52,7 +52,7 @@ const chapterObj = {
   arivee_ecole: arivéeÉcole = {
     subtitle: "Arrivée à l'école",
     text: "Tu viens d'arriver à l'école, de manière a faire attention a la pandémie tu dois choisir ton occupation judicieusement; tu peux aller dans ta petite classe fermer pour assister a ton cours, tu peux aller vers la cafétéria ou tu pourra travailler sur tes devoirs et avoir plus d'espace ou encore aller dehors...",
-    img: "ecole.jpg",
+    img: "ecole",
     options: [
       {
         text: "aller en classe",
@@ -72,7 +72,7 @@ const chapterObj = {
   offre_vaccinale: vaccin = {
     subtitle: "Offre vaccinale",
     text: "En arrivant à la cafétéria, tu croise un clinique de vaccination qui t'offre un vaccin sur place. Le vaccin semble légérement louche, l'accepte tu malgré ta phobie des aiguilles??",
-    img: "vaccin.jpg",
+    img: "vaccin",
     options: [
       {
         text: "aller en classe",
@@ -92,7 +92,7 @@ const chapterObj = {
   you_die: mort = {
     subtitle: "VOUS ETES MORT",
     text: "Tu as atttrapé la maladie, après de long jour à l'hopital à t'accrocher à la vie entouré de ta famille cher, la pandemie a eu raion de toi, repose en paix.",
-    img: "rip.jpg",
+    img: "rip",
   },
 
   retour_maison: retour = {
@@ -116,6 +116,15 @@ function goToChapter(chapterName) {
   desc.innerHTML = chapitre.text;
 
   const imgHtml = document.querySelector('.holder-img');
-  imgHtml.innerHTML = `<img src="assets/${chapitre.img}" alt="covid">`;
+  imgHtml.innerHTML = `<img src="assets/${chapitre.img}.jpg" alt="covid">`;
+
+  const optArr = chapitre.options;
+  const optionBar = document.querySelector('.option-bar');
+
+  for (let index = 0; index < optArr.length; index++){
+    const opt = optArr[index];
+
+    optionBar.insertAdjacentHTML('beforeend', `<input class="button" type="submit" value="${opt.text}" onclick="${opt.action}">`);
+  }
 }
 
