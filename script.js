@@ -93,6 +93,12 @@ const chapterObj = {
     subtitle: "VOUS ETES MORT",
     text: "Tu as atttrapé la maladie, après de long jour à l'hopital à t'accrocher à la vie entouré de ta famille cher, la pandemie a eu raion de toi, repose en paix.",
     img: "rip",
+    options: [
+      {
+        text: "recommencer",
+        action: "goToChapter('annonce_pandemie')",
+      },
+    ]
   },
 
   retour_maison: retour = {
@@ -124,7 +130,7 @@ function goToChapter(chapterName) {
   for (let index = 0; index < optArr.length; index++){
     const opt = optArr[index];
 
-    optionBar.insertAdjacentHTML('beforeend', `<input class="button" type="submit" value="${opt.text}" onclick="${opt.action}">`);
+    optionBar.innerHTML= `<input class="button" type="submit" value="${opt.text}" onclick="${opt.action}">`;
   }
 }
 
