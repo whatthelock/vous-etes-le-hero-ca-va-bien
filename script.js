@@ -125,12 +125,16 @@ function goToChapter(chapterName) {
   imgHtml.innerHTML = `<img src="assets/${chapitre.img}.jpg" alt="covid">`;
 
   const optArr = chapitre.options;
-  const optionBar = document.querySelector('.option-bar');
+  
+  let optionBout = "";
 
   for (let index = 0; index < optArr.length; index++){
     const opt = optArr[index];
-
-    optionBar.innerHTML= `<input class="button" type="submit" value="${opt.text}" onclick="${opt.action}">`;
+    optionBout += `<input class="button" type="submit" value="${opt.text}" onclick="${opt.action}">`;
+    console.log(optionBout);
   }
+  let optionBar= document.querySelector('.option-bar')
+  optionBar.innerHTML = optionBout;
+
 }
 
