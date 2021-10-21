@@ -52,7 +52,7 @@ const chapterObj = {
     options: [
       {
         text: "commender de la nourriture",
-        action: "goToChapter('you_die')",
+        action: "goToChapter('livreur_mort')",
       },
       {
         text: "Aller à l'épicerie",
@@ -61,18 +61,14 @@ const chapterObj = {
     ],
   },
 
-  journee_a_maison: {
-    subtitle: "Ta journée à la maison",
-    text: "Maintenant que tu ne va plus a l'école, tu dois trouver quelque chose a manger. Tu va regarder dans ton frigo...OH MALHEUR!!! I ne reste plus rine à manger dans ta maison!!!! QUe va tu faire!?",
-    img: "frigo",
+  livreur_mort: {
+    subtitle: "Livraison",
+    text: "Après avoir commendé et attendu plusieurs minutes, on sonne chez toi. C'est ta nourriture!! Malheureusement, en prennant ta commande, le livreur te tousse deçu! Dans le doute, tu va passer un test",
+    img: "ubereat",
     options: [
       {
-        text: "commender de la nourriture",
+        text: "Recevor les résultats",
         action: "goToChapter('you_die')",
-      },
-      {
-        text: "Aller à l'épicerie",
-        action: "goToChapter('aventure_epicerie')",
       },
     ],
   },
@@ -84,7 +80,7 @@ const chapterObj = {
     options: [
       {
         text: "banane",
-        action: "goToChapter('you_die')",
+        action: "goToChapter('banane_mort')",
       },
       {
         text: "Pain brun",
@@ -93,9 +89,21 @@ const chapterObj = {
     ],
   },
 
+  banane_mort: {
+    subtitle: "Banane",
+    text: "En arrivant vers la rangée ou se trouve les bananes, un personne qui ne voulait pas suivre les flèches indiiqué au sol vous eurte et vous éternu au visage. Stressé et sur le bors de la panique, tu te rends rapidement à la station de dépistage la plus proche",
+    img: "banane",
+    options: [
+      {
+        text: "regarder les résultats",
+        action: "goToChapter('you_die')",
+      },
+    ],
+  },
+
   arivee_ecole: {
     subtitle: "Arrivée à l'école",
-    text: "Tu viens d'arriver à l'école, de manière a faire attention a la pandémie tu dois choisir ton occupation judicieusement; tu peux aller dans ta petite classe fermer pour assister a ton cours, tu peux aller vers la cafétéria ou tu pourra travailler sur tes devoirs et avoir plus d'espace ou encore aller dehors...",
+    text: "Tu viens d'arriver à l'école, de manière à faire attention a la pandémie tu dois choisir ton occupation judicieusement; tu peux aller dans ta petite classe fermer pour assister a ton cours, tu peux aller vers la cafétéria ou tu pourra travailler sur tes devoirs et avoir plus d'espace ou encore aller dehors...",
     img: "ecole",
     options: [
       {
@@ -108,19 +116,31 @@ const chapterObj = {
       },
       {
         text: "Aller dehors",
+        action: "goToChapter('dehors_mort')",
+      },
+    ],
+  },
+
+ dehors_mort: {
+    subtitle: "Arrivée à l'école",
+    text: "Ahhhh, l'air frais de l'extérieur. Tu te send beaucoup plus en sécurité maintenant que tu es à libre. Soundainement, un grand groupe d'amis viennent vers toi et t'encercle. As ce moment la personne la plus proche de toi avoue avoir des symptôme très similaire à la grave maladie qui rode autour de toi. Tu te dépêche donc d'aller te faire dépister.",
+    img: "cours",
+    options: [
+      {
+        text: "Voir les résultats",
         action: "goToChapter('you_die')",
       },
     ],
   },
 
-  arivee: {
-    subtitle: "Arrivée à l'école",
-    text: "",
-    img: "ecole",
+  en_classe: {
+    subtitle: "En classe",
+    text: "Un fois arrivé en classe, tu es surpris de voir que tout le monde porte un masque et se tiens à distance, ce qui te permet d'apprendre ta nouvelle matière de manière sécutiraire et de continuer ta journée sans tracas. Tu retourne donc chez toi.",
+    img: "classe",
     options: [
       {
-        text: "aller en classe",
-        action: "goToChapter('en_classe')",
+        text: "aller vers ta maison",
+        action: "goToChapter('retour_maison')",
       },
     ],
   },
@@ -168,7 +188,7 @@ const chapterObj = {
 
   chapitre_final: {
     subtitle: "Retour à la maison",
-    text: "De retour a la maison, tu réalise que tu absolument te rendre à la fête de ton meilleur ami ,organisée depuis longtemps, tu n'as vraiment pas le choix, en espérant que tu es vacciné...",
+    text: "Youpi! Grace a ton vaccin tu as pu te rendre sans risque à cette fête attendu depuis si longtemps!! Félicitation! Grace à ton comportent exemplaire tu as pu sortir de cette pandémie!",
     img: "fete",
     options: [
       {
@@ -192,7 +212,7 @@ function goToChapter(chapterName) {
   desc.innerHTML = chapitre.text;
 
   const imgHtml = document.querySelector('.holder-img');
-  imgHtml.innerHTML = `<img src="assets/${chapitre.img}.jpg" alt="covid">`;
+  imgHtml.innerHTML = `<img src="assets/${chapitre.img}.jpg" alt="${chapitre.img}">`;
 
   const optArr = chapitre.options;
   
