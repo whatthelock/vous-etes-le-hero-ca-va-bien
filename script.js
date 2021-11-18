@@ -19,7 +19,7 @@ function losingVaccine() {
 }
 
 function passeportVaccinal(){
-  console.log(vaccineFounded);
+  console.log(typeof(vaccineFounded));
   if (vaccineFounded == true){
     console.log("go");
     goToChapter('chapitre_final');
@@ -31,7 +31,7 @@ function passeportVaccinal(){
 
 if(localStorage.getItem("vaccine") != undefined){
   console.log(localStorage.getItem("vaccine"));
-  vaccineFounded = localStorage.getItem("vaccine");
+  vaccineFounded = Boolean(localStorage.getItem("vaccine"));
   console.log(vaccineFounded);
 }
 else {
@@ -76,7 +76,7 @@ const chapterObj = {
     img: "frigo",
     options: [
       {
-        text: "commender de la nourriture",
+        text: "Commender de la nourriture",
         action: "goToChapter('livreur_mort')",
       },
       {
@@ -104,7 +104,7 @@ const chapterObj = {
     img: "epicerie",
     options: [
       {
-        text: "banane",
+        text: "Banane",
         action: "goToChapter('banane_mort')",
       },
       {
@@ -121,7 +121,7 @@ const chapterObj = {
     video: "banana",
     options: [
       {
-        text: "regarder les résultats",
+        text: "Regarder les résultats",
         action: "goToChapter('you_die')",
       },
     ],
@@ -133,7 +133,7 @@ const chapterObj = {
     img: "ecole",
     options: [
       {
-        text: "aller en classe",
+        text: "Aller en classe",
         action: "goToChapter('en_classe')",
       },
       {
@@ -165,7 +165,7 @@ const chapterObj = {
     img: "classe",
     options: [
       {
-        text: "aller vers ta maison",
+        text: "Aller vers ta maison",
         action: "goToChapter('retour_maison')",
       },
     ],
@@ -193,7 +193,7 @@ const chapterObj = {
     img: "rip",
     options: [
       {
-        text: "recommencer",
+        text: "Recommencer",
         action: "goToChapter('le_reveil')",
       },
     ]
@@ -218,7 +218,7 @@ const chapterObj = {
     img: "fete",
     options: [
       {
-        text: "recommener?",
+        text: "Recommener?",
         action: "losingVaccine()",
       },
     ]
@@ -244,12 +244,23 @@ function goToChapter(chapterName) {
   const optArr = chapitre.options;
   
   let optionBout = "";
+  let optionBar= document.querySelector('.option-bar')
 
   for (let index = 0; index < optArr.length; index++){
     const opt = optArr[index];
-    optionBout += `<input class="button" type="submit" value="${opt.text}" onclick="${opt.action}">`;
+    console.log(index)
+    optionBout += `<button onclick="${opt.action}" class="button">${opt.text}</button>`;
+    if(index == 2){
+      optionBar.style.justifyContent = "space-between";
+    }
+    if(index == 1){
+      optionBar.style.justifyContent = "space-around";
+    }
+    if(index == 0){
+      optionBar.style.justifyContent = "center";
+    }
   }
-  let optionBar= document.querySelector('.option-bar')
+  
   optionBar.innerHTML = optionBout;
   
   if(chapitre.video != undefined){
