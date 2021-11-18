@@ -1,19 +1,43 @@
 /*Tu te reveille un doux matin de printemps, le soleil illumine doucement ta chambre avec de beaux faissauts lumineux. */
-let vaccineFounded = false;
+
+let vaccineFounded = ""
+
+//console.log(vaccineFounded);
 
 function findingVaccine() {
   vaccineFounded = true;
+  localStorage.setItem("vaccine", vaccineFounded);
+  console.log(localStorage.getItem("vaccine"));
   goToChapter('retour_maison');
 }
 
+function losingVaccine() {
+  vaccineFounded = false;
+  localStorage.setItem("vaccine", vaccineFounded);
+  console.log("thefuck");
+  goToChapter('le_reveil');
+}
+
 function passeportVaccinal(){
+  console.log(vaccineFounded);
   if (vaccineFounded == true){
+    console.log("go");
     goToChapter('chapitre_final');
   }
-  else{
+  else if(vaccineFounded == false){
     goToChapter('you_die');
   }
 }
+
+if(localStorage.getItem("vaccine") != undefined){
+  console.log(localStorage.getItem("vaccine"));
+  vaccineFounded = localStorage.getItem("vaccine");
+  console.log(vaccineFounded);
+}
+else {
+  vaccineFounded = false;
+  console.log(vaccineFounded);
+};
 
 const chapterObj = {
   /*Tu te reveille un doux matin de printemps, le soleil illumine doucement ta chambre avec de beaux faissauts lumineux. */
@@ -21,6 +45,7 @@ const chapterObj = {
     subtitle: "Le réveil",
     text: "Tu te reveille un doux matin de printemps, le soleil illumine doucement ta chambre avec de beaux faissauts lumineux.",
     img: "chambre",
+    video: "reveil",
     options: [
       {
         text: "Descendre pour dejeuner",
@@ -93,6 +118,7 @@ const chapterObj = {
     subtitle: "Banane",
     text: "En arrivant vers la rangée ou se trouve les bananes, un personne qui ne voulait pas suivre les flèches indiiqué au sol vous eurte et vous éternu au visage. Stressé et sur le bors de la panique, tu te rends rapidement à la station de dépistage la plus proche",
     img: "banane",
+    video: "banana",
     options: [
       {
         text: "regarder les résultats",
@@ -156,7 +182,7 @@ const chapterObj = {
       },
       {
         text: "Tu refuse",
-        action: "goToChapter('offre_vaccinale')",
+        action: "goToChapter('retour_maison')",
       },
     ],
   },
@@ -193,17 +219,18 @@ const chapterObj = {
     options: [
       {
         text: "recommener?",
-        action: "goToChapter('le_reveil')",
+        action: "losingVaccine()",
       },
     ]
   }
 };
 
+const audio = new Audio('assets/bip.mp3');
+
+
+
 function goToChapter(chapterName) {
   const chapitre = chapterObj[chapterName];
-
-  console.log(chapitre.subtitle);
-  console.log(chapitre.options);
 
   const title = document.querySelector('.chapterName');
   title.innerHTML = chapitre.subtitle;
@@ -212,7 +239,7 @@ function goToChapter(chapterName) {
   desc.innerHTML = chapitre.text;
 
   const imgHtml = document.querySelector('.holder-img');
-  imgHtml.innerHTML = `<img src="assets/${chapitre.img}.jpg" alt="${chapitre.img}">`;
+  imgHtml.innerHTML = `<img src="assets/${chapitre.img}.jpg" alt="${chapitre.img}" class="contain-image">`;
 
   const optArr = chapitre.options;
   
@@ -221,12 +248,26 @@ function goToChapter(chapterName) {
   for (let index = 0; index < optArr.length; index++){
     const opt = optArr[index];
     optionBout += `<input class="button" type="submit" value="${opt.text}" onclick="${opt.action}">`;
-    console.log(optionBout);
   }
   let optionBar= document.querySelector('.option-bar')
   optionBar.innerHTML = optionBout;
   
+  if(chapitre.video != undefined){
+    imgHtml.innerHTML = `<video src="assets/${chapitre.video}.mp4" loop muted autoplay class="contain-image">></video>`;
+  }
+
+  audio.play();
+  audio.currentTime = 0;
+
+  localStorage.setItem("chaptName", chapterName);
+  
 }
 
-goToChapter('le_reveil');
+if(localStorage.getItem("chaptName") != undefined){
+  const chaptName = localStorage.getItem("chaptName");
+  goToChapter(chaptName);
+}
+else{
+  goToChapter('le_reveil');
+};
 
