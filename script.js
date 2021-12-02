@@ -227,7 +227,12 @@ const chapterObj = {
 
 const audio = new Audio('assets/bip.mp3');
 
+const input = document.querySelector('.input')
+let sound = true;
 
+input.addEventListener('change', function() {
+  sound = input.checked;
+});
 
 function goToChapter(chapterName) {
   const chapitre = chapterObj[chapterName];
@@ -244,11 +249,10 @@ function goToChapter(chapterName) {
   const optArr = chapitre.options;
   
   let optionBout = "";
-  let optionBar= document.querySelector('.option-bar')
+  let optionBar= document.querySelector('.choice-bar')
 
   for (let index = 0; index < optArr.length; index++){
     const opt = optArr[index];
-    console.log(index)
     optionBout += `<button onclick="${opt.action}" class="button">${opt.text}</button>`;
     if(index == 2){
       optionBar.style.justifyContent = "space-between";
@@ -267,8 +271,11 @@ function goToChapter(chapterName) {
     imgHtml.innerHTML = `<video src="assets/${chapitre.video}.mp4" loop muted autoplay class="contain-image">></video>`;
   }
 
-  audio.play();
-  audio.currentTime = 0;
+  if(sound == true){
+    audio.play();
+    audio.currentTime = 0;
+  }
+  
 
   localStorage.setItem("chaptName", chapterName);
   
@@ -281,4 +288,10 @@ if(localStorage.getItem("chaptName") != undefined){
 else{
   goToChapter('le_reveil');
 };
+
+function reset() {
+  vaccineFounded == false;
+  localStorage.clear();
+  goToChapter('le_reveil');
+}
 
