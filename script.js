@@ -105,12 +105,13 @@ const chapterObj = {
     img: "epicerie",
     options: [
       {
-        text: "Banane",
-        action: "goToChapter('banane_mort')",
-      },
-      {
+
         text: "Pain brun",
         action: "goToChapter('retour_maison')",
+      },
+      {
+        text: "Banane",
+        action: "goToChapter('banane_mort')",
       },
     ],
   },
