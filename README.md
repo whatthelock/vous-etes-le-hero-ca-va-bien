@@ -11,3 +11,5 @@
 ## Diagramme
 
 ![diagramme](/assets/prog_covid.drawio.png)
+
+[*__En ligne:__*](https://whatthelock.github.io/vous-etes-le-hero-ca-va-bien/)
