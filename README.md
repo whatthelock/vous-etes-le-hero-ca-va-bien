@@ -1,3 +1,5 @@
+[*__En ligne__*](https://whatthelock.github.io/vous-etes-le-hero-ca-va-bien/)
+
 ![#Ca Va Bien](/assets/logo.png)
 
 [Développement web - Projet vous êtes le héros](page1.html)
@@ -12,4 +14,3 @@
 
 ![diagramme](/assets/prog_covid.drawio.png)
 
-[*__En ligne:__*](https://whatthelock.github.io/vous-etes-le-hero-ca-va-bien/)
