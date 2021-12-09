@@ -1,5 +1,5 @@
 /*Tu te reveille un doux matin de printemps, le soleil illumine doucement ta chambre avec de beaux faissauts lumineux. */
-
+const body = document.querySelector('body');
 let vaccineFounded = ""
 
 //console.log(vaccineFounded);
@@ -41,6 +41,7 @@ else {
 
 const chapterObj = {
   /*Tu te reveille un doux matin de printemps, le soleil illumine doucement ta chambre avec de beaux faissauts lumineux. */
+  
   le_reveil: {
     subtitle: "Le réveil",
     text: "Tu te reveille un doux matin de printemps, le soleil illumine doucement ta chambre avec de beaux faissauts lumineux.",
@@ -253,7 +254,7 @@ function goToChapter(chapterName) {
 
   for (let index = 0; index < optArr.length; index++){
     const opt = optArr[index];
-    optionBout += `<button onclick="${opt.action}" class="button">${opt.text}</button>`;
+    optionBout += `<button onclick="${opt.action}" class="button opt">${opt.text}</button>`;
     if(index == 2){
       optionBar.style.justifyContent = "space-between";
     }
@@ -279,6 +280,7 @@ function goToChapter(chapterName) {
 
   localStorage.setItem("chaptName", chapterName);
   
+  body.className = chapterName;
 }
 
 if(localStorage.getItem("chaptName") != undefined){
@@ -293,5 +295,5 @@ function reset() {
   vaccineFounded == false;
   localStorage.clear();
   goToChapter('le_reveil');
-}
+};
 
